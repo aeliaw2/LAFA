@@ -129,4 +129,23 @@ Our project runs from the plan deadline on October 12 to the final release on De
 - Workflow, metadata, and documentation (Nov 20-Dec 3)
 - Final README and GitHub release (Dec 1-7)
 
-We will review the Gantt chart and adjust dates if a stage runs long or shorter than expected.
+We will review the Gantt chart and adjust dates if a stage runs longer or shorter than expected.
+
+## 12. Constraints and Challenges (Hamza)
+One of the main challenges of our project will be combining data from three different sources that use different formats and reporting methods. The World Bank and United Nations datasets report information by individual year, while FAOSTAT uses three-year averages for undernourishment. This could make it difficult to compare data from the same time periods, so we will need to establish a consistent method for aligning the years. Another challenge is differences in how countries are identified across the datasets. Each source may use different country names or codes, which could cause problems when merging the data. We will need to standardize country identifiers to make sure information from the same country is matched correctly. Missing or incomplete data may also affect our results. Some countries may not have information available for every year or indicator, which could limit the number of countries we can include in our analysis. Additionally, differences in how frequently the datasets are updated could make it difficult to compare the most recent information.
+
+## 13. Known Gaps / Additional Input Needed (Hamza)
+There are still a few areas of our project that require additional information or decisions before we can move forward. One important gap is determining which years and countries have sufficient data across all three datasets. We will need to identify the time periods that overlap and decide how to handle countries with missing information. However, as we progress with our project we are sure that we will encounter additional gaps or discrepancies that will require adjustments to our original plan, and update our approach as needed throughout the project. 
+
+## References
+Food and Agriculture Organization of the United Nations. (2026). *FAOSTAT: 
+Suite of Food Security Indicators* [Data set]. FAOSTAT. 
+https://www.fao.org/faostat/en/#data/FS
+
+United Nations Statistics Division. (2026). *SDG indicator 3.1.1: Maternal 
+mortality ratio (SH_STA_MORT)* [Data set]. United Nations Global SDG Indicators 
+Database. https://unstats.un.org/sdgs/dataportal
+
+World Bank. (2026). *World Development Indicators* [Data set]. World Bank. 
+https://databank.worldbank.org/source/world-development-indicators
+
