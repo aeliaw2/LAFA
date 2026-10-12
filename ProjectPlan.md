@@ -5,6 +5,7 @@
 We will build one country-year table linking GDP per capita (WDI), prevalence of undernourishment (FAOSTAT), and maternal mortality ratio (UN SDG).
 
 **Country key:** each file labels countries differently, so we wikk convert them all to one standard 3-letter ISO3 code.
+
 **Time key:** FAOSTAT gives 3 year averages, while others give single years. So we will pick the middle year and average the other datasets to match.
 
 ## **6. Data Quality Assessment** 
