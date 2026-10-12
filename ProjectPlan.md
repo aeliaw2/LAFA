@@ -1,15 +1,13 @@
 # Project Plan
 
-## Project Title
-
 **Economic Development, Food Insecurity, and Maternal Mortality Across Countries**
 
-## 1. Overview (Abby)
+## 1. Overview
 The goal of our project is to explore how economic development and food insecurity relate to maternal mortality across countries. We will look at how GDP per capita and the prevalence of undernourishment are associated with maternal mortality rates using three datasets from the World Bank, the Food and Agriculture Organization of the United Nations (FAOSTAT), and the United Nations Global SDG Database.
 A major focus of this project is preparing the data so we can make reliable comparisons. We will start by checking each dataset for accuracy, completeness, timeliness, and consistency. Then, we will clean and standardize country identifiers, year formats, and missing values so the datasets can be combined. Since FAOSTAT reports three-year averages, we will also decide on a consistent way to align those observations with the annual data from the other sources.
 Once the datasets are combined, we will check the data again to make sure the integration did not introduce errors or inconsistencies. We will then use exploratory analysis and visualizations to look for patterns among the three indicators. Throughout the project, we will document our steps and automate the workflow so others can understand our process and reproduce the results.
 
-## 2. Team (Abby)
+## 2. Team
 
 ### Team Members and Responsibilities
 
@@ -20,7 +18,7 @@ Shannon Ahn: Develop the data integration strategy, assess data quality, outline
 All team members will contribute to the GitHub repository so that individual
 contributions are documented through the commit history.
 
-## 3. Research Questions (Abby)
+## 3. Research Questions
 
 ### Main Research Question
 
@@ -28,8 +26,11 @@ contributions are documented through the commit history.
 mortality across countries?**
 
 ### Supporting Questions
+1. Do countries with higher GDP per capita generally have lower maternal mortality rates?
+2. Do countries with more undernourishment tend to have higher maternal mortality rates?
+3. How have GDP per capita, undernourishment, and maternal mortality changed over time in different countries?
 
-## 4. Datasets (Abby)
+## 4. Datasets
 
 ### Dataset 1: World Development Indicators (World Bank)
 **Source:** World Bank  
@@ -57,13 +58,13 @@ mortality across countries?**
 **Role in Project:**Maternal mortality will be the main health outcome in our analysis. By combining this dataset with the World Bank and FAOSTAT data, we will explore how maternal mortality ratios relate to GDP per capita and undernourishment. Together, these datasets will help us look for patterns connecting economic development, food insecurity, and maternal health.
 **Planned Integration Fields:** Geographic area identifier, mapped to a standardized country code, Year
 
-5. Data Integration Strategy (shannon)
+5. Data Integration Strategy
 We will build one country-year table linking GDP per capita (WDI), prevalence of undernourishment (FAOSTAT), and maternal mortality ratio (UN SDG).
 
-Country key: each file labels countries differently, so we wikk convert them all to one standard 3-letter ISO3 code.
-Time key: FAOSTAT gives 3 year averages, while others give single years. So we will pick the middle year and average the other datasets to match.
+Country key: each file labels countries differently, so we will convert them all to one standard 3-letter ISO3 code.
+Time key: FAOSTAT gives 3-year averages, while others give single years. So we will pick the middle year and average the other datasets to match.
 
-6. Data Quality Assessment (shannon)
+6. Data Quality Assessment
 
 Accuracy: Check that units are correct and values are realistic (no negatives, no percentages over 100).
 
@@ -71,12 +72,12 @@ Completeness: Count missing values, countries, and years in each dataset.Count m
 
 Timeliness: Find the latest year in each dataset and the years all three share.
 
-Consistency : Check that country names, codes, units, and year formats match across datasets.
+Consistency: Check that country names, codes, units, and year formats match across datasets.
 
 
-7. Data Cleaning Plan (shannon)
+7. Data Cleaning Plan
 We will use Python scripts to select needed columns, reshape the World Bank data, standardize country codes and column names, remove regional groups, keep missing values as blank rather than filling them in, and log every change we make.
 
 
-8. Storage and Organization Strategy (shannon)
+8. Storage and Organization Strategy
 We will use GitHub with separate folders for the original files, one for cleaned files, one for the final combined table, and one for code and notes.
