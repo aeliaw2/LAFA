@@ -32,28 +32,28 @@ mortality across countries?**
 
 ### Dataset 1: World Development Indicators (World Bank)
 **Source:** World Bank  
-**File:** "WDICSV.csv"
-**Description:** The World Development Indicators dataset includes economic, population, and health statistics for countries around the world. Its historical data will allow us to compare countries and track changes over time.
-**Variables of Interest:** GDP per capita (current US$), Total population, Life expectancy at birth (years), Country name and country code, Year
-**Role in Project:** This dataset will provide information about economic development and general health conditions. GDP per capita will be used to examine whether countries with higher levels of economic development have lower maternal mortality rates.
-**Planned Integration Fields:** Country name/country code, Year
+**File:** `data/raw/wdi_gdp_per_capita.zip`  
+**Description:** The World Development Indicators dataset includes economic, population, and health statistics for countries around the world. Its historical data will allow us to compare countries and track changes over time. We download only the GDP per capita indicator (`NY.GDP.PCAP.CD`) rather than the full dataset.  
+**Variables of Interest:** GDP per capita (current US$), Country name and country code, Year  
+**Role in Project:** This dataset will provide information about economic development. GDP per capita will be used to examine whether countries with higher levels of economic development have lower maternal mortality rates.  
+**Planned Integration Fields:** Country name/country code, Year  
 
 ### Dataset 2: Suite of Food Security Indicators (FAOSTAT)
 **Source:** Food and Agriculture Organization of the United Nations (FAO)  
-**File:** "FAOSTAT_data_en_10-4-2026(1).csv"
-**Description:** The FAOSTAT Suite of Food Security Indicators provides data on food security and nutrition across countries. Our selected dataset focuses on the prevalence of undernourishment, which measures the proportion of the population lacking sufficient dietary energy.
-**Primary Indicator:** Prevalence of undernourishment (%) (three-year average)
-**Additional Fields:** Area (country name), Area Code (M49), Year (three-year reporting period), Unit, Value
-**Role in Project:** This dataset will measure food insecurity across countries. We will use the prevalence of undernourishment to investigate whether countries experiencing greater food insecurity also have higher maternal mortality rates.
-**Planned Integration Fields:** Country/area name or standardized country code and Year, after aligning three-year reporting periods with annual observations
+**File:** `data/raw/faostat_food_security.zip` (FAOSTAT bulk download for the Food Security domain)  
+**Description:** The FAOSTAT Suite of Food Security Indicators provides data on food security and nutrition across countries. Our selected dataset focuses on the prevalence of undernourishment, which measures the proportion of the population lacking sufficient dietary energy.  
+**Primary Indicator:** Prevalence of undernourishment (%) (three-year average)  
+**Additional Fields:** Area (country name), Area Code (M49), Year (three-year reporting period), Unit, Value, Flag  
+**Role in Project:** This dataset will measure food insecurity across countries. We will use the prevalence of undernourishment to investigate whether countries experiencing greater food insecurity also have higher maternal mortality rates.  
+**Planned Integration Fields:** Country/area name or standardized country code and Year, after aligning three-year reporting periods with annual observations  
 
 ### Dataset 3: Maternal Mortality Ratio (United Nations)
 **Source:** United Nations / Global SDG Database  
-**File:** "SH_STA_MORT.csv"
-**Description:** This dataset provides country-level estimates of maternal mortality over time. It focuses on deaths related to pregnancy and childbirth, giving us a way to compare maternal health outcomes across countries.
-**Primary Indicator:** Maternal mortality ratio (maternal deaths per 100,000 live births)
-**Additional Fields:** Geographic area identifier, Time period (year), Sex, Observation value
-**Role in Project:** Maternal mortality will be the main health outcome in our analysis. By combining this dataset with the World Bank and FAOSTAT data, we will explore how maternal mortality ratios relate to economic development and food insecurity.
+**File:** `data/raw/sdg_maternal_mortality.csv`  
+**Description:** This dataset provides country-level estimates of maternal mortality over time. It focuses on deaths related to pregnancy and childbirth, giving us a way to compare maternal health outcomes across countries.  
+**Primary Indicator:** Maternal mortality ratio (maternal deaths per 100,000 live births)  
+**Additional Fields:** Geographic area identifier, Time period (year), Sex, Observation value  
+**Role in Project:** Maternal mortality will be the main health outcome in our analysis. By combining this dataset with the World Bank and FAOSTAT data, we will explore how maternal mortality ratios relate to economic development and food insecurity.  
 **Planned Integration Fields:** Geographic area identifier, mapped to a standardized country code, Year
 
 ## 5. Data Integration Strategy
