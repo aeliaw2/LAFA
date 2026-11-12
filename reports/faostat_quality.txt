@@ -1,0 +1,32 @@
+FAOSTAT quality assessment: Prevalence of undernourishment (%, 3-year average)
+Rows: 5904 | Areas: 246 (203 countries, 43 regions or aggregates)
+
+== ACCURACY ==
+Values that are not numbers: 1452 {'<2.5': 1452}
+Numeric values outside 0-100%: 0 (lowest 2.5, highest 72.5)
+Flags: {'E': 5022, 'O': 882} (E = estimated value, O = missing value)
+
+== COMPLETENESS ==
+Column completeness (% of rows filled in):
+  Area: 100.0%
+  Area Code (M49): 100.0%
+  Year: 100.0%
+  Unit: 100.0%
+  Value: 85.1%
+  Flag: 100.0%
+Missing values: 882 of 5904 rows (14.9%)
+Countries with no values at all: 34: American Samoa; Andorra; Antigua and Barbuda; Bahamas; Bahrain; Bermuda; Bhutan; Brunei Darussalam; Burundi; China, Hong Kong SAR; China, Macao SAR; Cook Islands; Equatorial Guinea; Eritrea; Greenland; Grenada; Lesotho; Maldives; Marshall Islands; Micronesia (Federated States of); Nauru; Niue; Palau; Palestine; Puerto Rico; Qatar; Saint Kitts and Nevis; Saint Lucia; Singapore; Slovakia; Tokelau; Tonga; Tuvalu; Yemen
+Countries covered: 203 of 249 countries and territories in ISO 3166
+Countries with a value in each 3-year window: 166 to 168
+
+== TIMELINESS ==
+3-year windows: 24, from 2000-2002 to 2023-2025
+
+== CONSISTENCY ==
+Units used: ['%']
+Years not in 'YYYY-YYYY' format: 0
+Windows that are not exactly 3 years long: 0
+Rows where 'Year Code' does not match 'Year': 0
+Duplicate country-window rows: 0
+M49 codes stored with a leading apostrophe (e.g. '004): 5904 of 5904
+Every missing value has flag O, and every flag O is missing: True
