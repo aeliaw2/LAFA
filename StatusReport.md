@@ -191,7 +191,9 @@ FAOSTAT values reported as `<2.5` (below 2.5%) are kept separate from truly miss
 
 ### 5.1 Abigail Liaw
 
-> **TODO – Abigail:** 2–4 sentences on your contributions. Commit from your own account.
+I handled the FAOSTAT dataset from downloading it to cleaning it. I wrote and ran scripts to download the bulk Food Security file, verify it with a SHA-256 checksum, and check its accuracy, completeness, timeliness, and consistency. I also wrote the cleaning script to convert country codes to ISO3, remove regional aggregates, label each three-year window with its middle year, and flag values reported as “<2.5”.
+
+For Milestone 3, I organized the task split and timeline and narrowed the project scope after reviewing the course materials. I also updated the dataset descriptions in ProjectPlan.md to reflect our new sources, wrote the “Changes to the Project Plan” section, and put together this status report.
 
 ### 5.2 Hamza Ahmed
 
