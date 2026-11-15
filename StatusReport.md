@@ -65,7 +65,9 @@ Each step addresses an issue from the quality assessment:
 
 5. **Missing values (858 country rows):** Left blank, not filled in.
 
-> **TODO – Hamza, Olusegun:** What your cleaning script does and which quality problem each step fixes. Include the script and cleaned file paths in `data/cleaned/`.
+Our data cleaning process focuses on preparing the maternal mortality dataset for integration with the World Bank and FAOSTAT data. The main issue identified was that our original file used internal UN country codes, which could not be directly matched with the other sources. We addressed this by obtaining a new version containing standard country identifiers and names. The planned cleaning script, `scripts/clean_sdg.py`, will select the columns needed for our analysis, standardize country codes into ISO3 format, and make sure years and mortality values are stored consistently. We will also remove regional aggregates and preserve missing values rather than filling them with assumptions. These steps will help create a consistent country-year dataset that can be merged with the other sources.
+
+The cleaned output is planned for `data/cleaned/sdg_maternal_mortality.csv`.
 
 ### 1.4 Data Integration
 
