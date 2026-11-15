@@ -201,7 +201,7 @@ For Milestone 3, I organized the task split and timeline and narrowed the projec
 
 ### 5.2 Hamza Ahmed
 
-> **TODO – Hamza:** For Milestone 3, I focused on the UN SDG maternal mortality dataset and helped address issues with the original country's geographic identifiers by identifying a version with standard country codes and names. I also worked on planning the data quality assessment and cleaning steps needed to prepare the dataset for integration. Additionally, I documented the main challenges our team encountered and explained how we resolved them or plan to address them moving forward.
+For Milestone 3, I focused on the UN SDG maternal mortality dataset and helped address issues with the original country's geographic identifiers by identifying a version with standard country codes and names. I also worked on planning the data quality assessment and cleaning steps needed to prepare the dataset for integration. Additionally, I documented the main challenges our team encountered and explained how we resolved them or plan to address them moving forward.
 
 ### 5.3 Olusegun Fajinmi
 
