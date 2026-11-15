@@ -45,7 +45,7 @@ The acquisition script, `scripts/acquire_sdg.py`, is intended to automate the do
 
 - **Consistency:** One unit (%), every year is in `YYYY-YYYY` format and spans exactly three years, there are no duplicate rows, and every missing value has flag O. Every M49 code is stored with a leading apostrophe (`'004`), which cleaning removes.
 
-> **TODO – Hamza, Olusegun:** One short paragraph each covering accuracy, completeness, timeliness, and consistency, with the main numbers and the quality-check script and output file paths in `reports/`.
+Our pre integration quality assessment focuses on four dimensions: accuracy, completeness, timeliness, and consistency. For accuracy, we will check that maternal mortality ratios are numeric, nonnegative, and measured in deaths per 100,000 live births. For completeness, we will examine missing values and count how many countries have available data. For timeliness, we identified that the dataset ends in 2020, which limits its overlap with the more recent FAOSTAT observations. For consistency, we will check for duplicate country-year records and verify that country identifiers and year formats are standardized. These checks will help us identify issues before combining the UN SDG data with the other datasets.
 
 ### 1.3 Data Cleaning
 
