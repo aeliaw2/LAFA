@@ -155,40 +155,39 @@ FAOSTAT values reported as `<2.5` (below 2.5%) are kept separate from truly miss
 
 ### 4.1 UN SDG Country Codes
 
-**Challenge:** The SDG file used internal UN codes with no country names.
+**Challenge:** Our original UN SDG dataset used internal geographic codes without country names, making it difficult to match the data with our other datasets.
 
-**Resolution:** Re-downloaded the file with standard country codes and names.
+**Resolution:** We re-downloaded the dataset with standard country identifiers and names. This allows us to standardize the countries using ISO3 codes and makes integration more manageable.
 
 ### 4.2 World Bank WDI File Size
 
-**Challenge:** The full WDI file was 198 MB, over GitHub's limit.
+**Challenge:** The original World Bank dataset was approximately 198 MB, which exceeded the GitHub file size limit outlined in our project requirements.
 
-**Resolution:** Download GDP per capita only.
+**Resolution:** Instead of downloading the entire dataset, we decided to download only the GDP per capita indicator. This reduces the file size while still providing the information needed for our research questions.
 
 ### 4.3 Non-Numeric FAOSTAT Values
 
-**Challenge:** FAOSTAT reports some values as text (`<2.5`) instead of numbers.
+**Challenge:** Some FAOSTAT undernourishment values were reported as text, such as (<2.5), rather than numbers. This creates problems when performing calculations and combining datasets.
 
-**Resolution:** Use a flag column to distinguish these values.
+**Resolution:** We stored these values as 2.5 and added a flag column to indicate that the original observation was below 2.5%. This allows us to use the data while keeping track of how the values were originally reported.
 
 ### 4.4 Differences in Year Coverage
 
-**Challenge:** The years only partly overlap. SDG ends in 2020 and FAOSTAT runs from 2000–2002 to 2023–2025, so the shared windows end at 2019–2021.
+**Challenge:** The three datasets do not cover exactly the same years. The UN SDG maternal mortality data ends in 2020, while FAOSTAT includes three-year reporting periods through 2023–2025.
 
-**Resolution:** Use an `n_years` column to track how many annual observations are available.
+**Resolution:** We decided to align the datasets using FAOSTAT's three-year windows and calculate averages for the corresponding annual observations. We will also use an n_years column to track how many years of data are available, allowing us to identify incomplete periods.
 
 ### 4.5 Inconsistent China Definitions
 
-**Challenge:** FAOSTAT's "China" combines mainland China, Hong Kong, Macao and Taiwan, while the other datasets use mainland China.
+**Challenge:** FAOSTAT includes a combined China category that covers mainland China, Hong Kong, Macao, and Taiwan, while the other datasets identify mainland China separately.
 
-**Resolution:** Use FAOSTAT's "China, mainland" entry.
+**Resolution:** We decided to use FAOSTAT's "China, mainland" entry and exclude the combined category. This helps prevent inconsistencies when matching countries across the datasets.
 
 ### 4.6 Schedule Changes
 
-**Challenge:** The status report deadline moved earlier, during midterm week.
+**Challenge:** The status report deadline was moved earlier to November 16, which also overlaps with our midterm exam period. This gives our team less time to finish certain parts of the project.
 
-**Resolution:** Reprioritized tasks.
-
+**Resolution:** We adjusted our schedule and prioritized data acquisition, cleaning, and the status report. We also moved the post-integration data quality assessment until after the midterm period so we can complete the remaining work without rushing the earlier steps.
 ---
 
 ## 5. Individual Contributions
