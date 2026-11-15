@@ -29,7 +29,9 @@ The acquisition script, `scripts/acquire_sdg.py`, is intended to automate the do
 
 #### World Bank WDI – GDP per Capita (Olusegun)
 
-> **TODO – Olusegun:** Same as above.
+Using scripts/acquire_wdi.py, we downloaded GDP per capita (current US$, indicator NY.GDP.PCAP.CD) for 2000 to 2025 from the World Bank API into data/raw/wdi_gdp_per_capita.json. It also downloads the World Bank's country list into data/raw/wdi_countries.json, which we use to tell countries apart from regional groups.
+
+The first run saved a SHA-256 checksum for each file in data/raw/ (wdi_gdp_per_capita.json.sha256 and wdi_countries.json.sha256), and every later run stops with an error if a file has changed.
 
 ### 1.2 Pre-Integration Data Quality Assessment
 
@@ -46,6 +48,15 @@ The acquisition script, `scripts/acquire_sdg.py`, is intended to automate the do
 - **Consistency:** One unit (%), every year is in `YYYY-YYYY` format and spans exactly three years, there are no duplicate rows, and every missing value has flag O. Every M49 code is stored with a leading apostrophe (`'004`), which cleaning removes.
 
 Our pre integration quality assessment focuses on four dimensions: accuracy, completeness, timeliness, and consistency. For accuracy, we will check that maternal mortality ratios are numeric, nonnegative, and measured in deaths per 100,000 live births. For completeness, we will examine missing values and count how many countries have available data. For timeliness, we identified that the dataset ends in 2020, which limits its overlap with the more recent FAOSTAT observations. For consistency, we will check for duplicate country-year records and verify that country identifiers and year formats are standardized. These checks will help us identify issues before combining the UN SDG data with the other datasets.
+
+### World Bank WDI (Olusegun)
+
+scripts/assess_wdi.py checks the 6,916 rows of GDP per capita and saves its results to reports/wdi_quality.txt.
+
+Accuracy: Values range from $109.59 to $288,001.57, there are no zero or negative values, and all values are numeric.
+Completeness: 3.8% of country values are missing, 3 countries have no values at all, and 186 to 214 countries have a value in each year. The file also includes 44 regional and income groups (such as "World" and "High income") that are not countries.
+Timeliness: Years run from 2000 to 2025, and 186 countries have a value in the latest year.
+Consistency: One unit (current US$), every year is a four-digit number, and there are no duplicate country-year rows. 130 rows have no ISO3 code.
 
 ### 1.3 Data Cleaning
 
@@ -69,13 +80,32 @@ Our data cleaning process focuses on preparing the maternal mortality dataset fo
 
 The cleaned output is planned for `data/cleaned/sdg_maternal_mortality.csv`.
 
+### World Bank WDI (Olusegun)
+
+scripts/clean_wdi.py produces data/cleaned/wdi_gdp_per_capita.csv (5,642 rows: 217 countries × 26 years).
+
+Each step addresses an issue from the quality assessment:
+
+Regional and income groups mixed with countries: The 44 groups the World Bank labels "Aggregates" (1,144 rows) are dropped, so only countries remain.
+Rows with no ISO3 code: The 130 rows with no code are dropped, since they can't be matched to the other datasets.
+Years stored as text: Converted to whole numbers so they join with the other datasets.
+Missing values (214 country rows): Left blank, not filled in.
+
 ### 1.4 Data Integration
 
 > **TODO – Shannon:** Country-code helper, how the 3-year windows are matched, and status of the integration script, with file paths.
 
 ### 1.5 Workflow and Reproducibility
 
-> **TODO – Olusegun:** Folder structure, run-all script, and `requirements.txt`, with file paths.
+The whole workflow runs with one command from the project root: bash run_all.sh. It installs the packages in requirements.txt, then runs each dataset's scripts in order (acquire, assess, clean). Every script uses relative paths, so it runs without edits.
+
+Folder structure:
+
+data/raw/ holds the original downloads and their .sha256 checksum files.
+data/cleaned/ holds one cleaned CSV per dataset.
+scripts/ holds one script per step.
+reports/ holds the quality-check output.
+run_all.sh, requirements.txt, README, ProjectPlan.md and StatusReport.md sit in the project root.
 
 ### 1.6 Post-Integration Data Quality Assessment
 
@@ -89,16 +119,15 @@ Planned for after the midterm (see timeline). It will repeat the four-dimension 
 
 | Task | Owner | Original Dates | Status | Expected Completion |
 |---|---|---|---|---|
-| Setup and acquisition | Abigail, Hamza, Olusegun | Oct 12–21 | | |
-| Pre-integration quality assessment | Abigail, Hamza, Olusegun | Oct 19–Nov 1 | | |
-| Data cleaning | Abigail, Hamza, Olusegun | Oct 26–Nov 8 | | |
-| Country-code helper and integration | Shannon | Nov 2–12 | | |
-| Post-integration quality assessment | Shannon | Nov 9–17 | | |
-| Interim status report | Everyone | Nov 10–19 | | |
-| Analysis and visualization | | Nov 18–28 | | |
-| Workflow, metadata, and documentation | Olusegun | Nov 20–Dec 3 | | |
-| Final README and GitHub release | | Dec 1–7 | | |
-
+| Setup and acquisition | Abigail, Hamza, Olusegun | Oct 12–21 | Done | Nov 15 |
+| Pre-integration quality assessment | Abigail, Hamza, Olusegun | Oct 19–Nov 1 | Done | Nov 15 |
+| Data cleaning | Abigail, Hamza, Olusegun | Oct 26–Nov 8 | Done | Nov 15 |
+| Country-code helper and integration | Shannon | Nov 2–12 | Done | Nov 15 |
+| Post-integration quality assessment | Shannon | Nov 9–17 | Not started | After Nov 20 |
+| Interim status report | Everyone | Nov 10–16 | Done | Nov 15 |
+| Analysis and visualization | TBD | Nov 18–28 | Not started | Nov 28 |
+| Workflow, metadata, and documentation | Olusegun | Nov 20–Dec 3 | In progress | Dec 3 |
+| Final README and GitHub release | TBD | Dec 1–7 | Not started | Dec 7 |
 ---
 
 ## 3. Changes to the Project Plan
@@ -205,7 +234,7 @@ For Milestone 3, I focused on the UN SDG maternal mortality dataset and helped a
 
 ### 5.3 Olusegun Fajinmi
 
-> **TODO – Olusegun:** 2–4 sentences on your contributions. Commit from your own account.
+I took the World Bank GDP per capita data from start to finish. I wrote the scripts that download it, check it with a SHA-256 checksum, look at its quality, and take out the regional and income groups. I also put together the run-all script and the requirements file. In the project plan, I wrote the ethical and legal, workflow, and timeline sections, and for this report I filled in the updated timeline.
 
 ### 5.4 Shannon Ahn
 
