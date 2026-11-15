@@ -23,7 +23,9 @@ The first run saved the checksum to `data/raw/faostat_food_security.zip.sha256`,
 
 #### UN SDG – Maternal Mortality Ratio (Hamza)
 
-> **TODO – Hamza:** What your script downloads, from where, how it checks the SHA-256, and the script and data file paths.
+Our original UN SDG dataset only included internal UN geographic codes without country names, which made it difficult to match countries across datasets. To address this, we re-downloaded the maternal mortality dataset from the United Nations Global SDG Database with standard country identifiers and names.
+
+The acquisition script, scripts/acquire_sdg.py, is intended to automate the download and use a SHA-256 checksum to verify the file's integrity. The dataset will be stored in data/raw/sdg_maternal_mortality.csv so it can be used for the remaining data quality and cleaning steps.
 
 #### World Bank WDI – GDP per Capita (Olusegun)
 
