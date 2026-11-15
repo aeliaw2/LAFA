@@ -188,6 +188,7 @@ FAOSTAT values reported as `<2.5` (below 2.5%) are kept separate from truly miss
 **Challenge:** The status report deadline was moved earlier to November 16, which also overlaps with our midterm exam period. This gives our team less time to finish certain parts of the project.
 
 **Resolution:** We adjusted our schedule and prioritized data acquisition, cleaning, and the status report. We also moved the post-integration data quality assessment until after the midterm period so we can complete the remaining work without rushing the earlier steps.
+
 ---
 
 ## 5. Individual Contributions
