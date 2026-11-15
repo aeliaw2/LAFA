@@ -151,7 +151,7 @@ FAOSTAT values reported as `<2.5` (below 2.5%) are kept separate from truly miss
 
 ## 4. Challenges and Resolutions
 
-> **TODO – Hamza:** For each challenge, say how we resolved it or how we plan to.
+> **TODO – Hamza**
 
 ### 4.1 UN SDG Country Codes
 
@@ -201,7 +201,7 @@ For Milestone 3, I organized the task split and timeline and narrowed the projec
 
 ### 5.2 Hamza Ahmed
 
-> **TODO – Hamza:** 2–4 sentences on your contributions. Commit from your own account.
+> **TODO – Hamza:** For Milestone 3, I focused on the UN SDG maternal mortality dataset and helped address issues with the original country's geographic identifiers by identifying a version with standard country codes and names. I also worked on planning the data quality assessment and cleaning steps needed to prepare the dataset for integration. Additionally, I documented the main challenges our team encountered and explained how we resolved them or plan to address them moving forward.
 
 ### 5.3 Olusegun Fajinmi
 
