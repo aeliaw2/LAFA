@@ -4,9 +4,7 @@ from country_codes import is_iso3_country
 
 FAOSTAT = "data/cleaned/faostat_undernourishment.csv"
 
-# name: (cleaned file path, value column)
-# The SDG entry is skipped automatically until Hamza pushes his file.
-# Change "mmr" to the real value column name once you see his file.
+
 OTHERS = {
     "gdp_per_capita": ("data/cleaned/wdi_gdp_per_capita.csv", "gdp_per_capita"),
     "maternal_mortality": ("data/cleaned/sdg_maternal_mortality.csv", "mmr"),
@@ -14,8 +12,6 @@ OTHERS = {
 
 
 def three_year_average(annual, value_col, name):
-    """Average annual values over each 3-year window, keyed by the window's middle year.
-    Returns iso3, year, <name>, <name>_n_years (how many of the 3 years had data, 0-3)."""
     pieces = []
     for offset in (-1, 0, 1):
         shifted = annual[["iso3", "year", value_col]].copy()
