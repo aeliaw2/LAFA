@@ -90,9 +90,19 @@ Each step addresses an issue from the quality assessment:
 3. **Years stored as text:** Converted to whole numbers so they join with the other datasets.
 4. **Missing values (214 country rows):** Left blank, not filled in.
 
-### 1.4 Data Integration
+### 1.4 Data Integration (Shannon)
 
-> **TODO – Shannon:** Country-code helper, how the 3-year windows are matched, and status of the integration script, with links to the files.
+**Country-code helper**
+[`scripts/country_codes.py`](scripts/country_codes.py) uses `pycountry` to convert M49 codes and country names to ISO3, with a manual rule for China (FAOSTAT's combined "China" is excluded and "China, mainland" maps to CHN). It also checks whether a code is a real country code, which we use to flag unrecognized codes during integration.
+
+**Year matching**
+[`scripts/integrate.py`](scripts/integrate.py) starts from FAOSTAT's 4,872 country-window rows. For GDP per capita, it averages the annual values over the three years of each window and records a `gdp_per_capita_n_years` column (0–3) for how many years had data. Missing values stay blank.
+
+**Merge and results**
+
+The cleaned WDI file is left-joined to FAOSTAT on `iso3` and `year`, so FAOSTAT defines the country-window grid and the row count stays at 4,872. Four FAOSTAT countries have no WDI data (Cook Islands, Niue, Tokelau, Taiwan), and 18 WDI countries and territories are not in FAOSTAT (mostly small territories, plus Kosovo, which `pycountry` does not recognize). In the output, 4,691 rows (96.3%) average all three years, 25 rows average one or two years, and 156 rows (3.2%) have no GDP value. 17.6% of rows have no undernourishment value. The result is saved to [`data/integrated/integrated.csv`](data/integrated/integrated.csv).
+
+**Status: In progress.** FAOSTAT and WDI are merged. The maternal mortality data will be added once the cleaned UN SDG file is available, after which we will rerun `integrate.py`, review unmatched countries, and run the post-integration quality check.
 
 ### 1.5 Workflow and Reproducibility
 
@@ -224,4 +234,5 @@ I took the World Bank GDP per capita data from start to finish. I wrote the scri
 
 ### 5.4 Shannon Ahn
 
-> **TODO – Shannon:** 2–4 sentences on your contributions. Commit from your own account.
+I wrote the country-code helper (`country_codes.py`), which converts identifiers to ISO3 with `pycountry` and includes a manual rule for China. I wrote `integrate.py`, which averages GDP per capita over each FAOSTAT 3-year window, adds an `n_years` column to track missing data, and left-joins the result onto the FAOSTAT table to produce `data/integrated/integrated.csv`. The maternal mortality data will be added once the cleaned SDG file is available.
+
