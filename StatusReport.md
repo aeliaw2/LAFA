@@ -112,6 +112,7 @@ Folder structure:
 
 - [`data/raw/`](data/raw/) holds the original downloads and their `.sha256` checksum files.
 - [`data/cleaned/`](data/cleaned/) holds one cleaned CSV per dataset.
+- [`data/integrated/`](data/integrated/) holds the merged country-window table (`integrated.csv`).
 - [`scripts/`](scripts/) holds one script per step.
 - [`reports/`](reports/) holds the quality-check output.
 - [`run_all.sh`](run_all.sh), [`requirements.txt`](requirements.txt), README, [`ProjectPlan.md`](ProjectPlan.md) and `StatusReport.md` sit in the project root.
